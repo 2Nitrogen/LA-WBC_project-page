@@ -224,6 +224,30 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.publication-affiliation { margin-bottom: .9rem; }
+
+.affiliation-logos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 850px;
+    margin: 0 auto 1.25rem;
+}
+
+.affiliation-logos img {
+    display: block;
+    justify-self: center;
+    max-width: 100%;
+    max-height: 92px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.publication-venue-line { margin-bottom: 1rem; }
+.publication-venue-line .publication-venue { margin-top: 0; }
+
 .publication-venue {
     color: var(--text-secondary);
     width: fit-content;
@@ -675,6 +699,8 @@ code {
 @media screen and (max-width: 768px) {
   .hardware-comparisons { grid-template-columns: 1fr; }
   .experiment-grid { grid-template-columns: 1fr; }
+  .affiliation-logos { grid-template-columns: 1fr; gap: 1rem; max-width: 300px; }
+  .affiliation-logos img { max-height: 64px; }
   .hero-body {
     padding: 2rem 1rem;
   }
