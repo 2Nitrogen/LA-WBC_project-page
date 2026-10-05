@@ -231,7 +231,7 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
     gap: 1.5rem;
-    max-width: 850px;
+    max-width: 650px;
     margin: 0 auto 1.25rem;
 }
 
@@ -239,7 +239,7 @@ body {
     display: block;
     justify-self: center;
     max-width: 100%;
-    max-height: 92px;
+    max-height: 64px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -700,7 +700,7 @@ code {
   .hardware-comparisons { grid-template-columns: 1fr; }
   .experiment-grid { grid-template-columns: 1fr; }
   .affiliation-logos { grid-template-columns: 1fr; gap: 1rem; max-width: 300px; }
-  .affiliation-logos img { max-height: 64px; }
+  .affiliation-logos img { max-height: 48px; }
   .hero-body {
     padding: 2rem 1rem;
   }
