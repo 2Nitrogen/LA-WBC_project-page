@@ -45,7 +45,8 @@
   font-size: .84rem;
 }
 
-.teaser-figure { margin: 0; }
+.teaser-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr); gap: 2rem; align-items: stretch; }
+.teaser-figure { min-width: 0; margin: 0; }
 .teaser-figure img {
   width: 100%;
   height: auto;
@@ -58,6 +59,9 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+.philosophy-card { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 2rem; background: var(--background-secondary); border: 1px solid var(--border-color); border-left: 4px solid var(--primary-color); box-shadow: var(--shadow-md); }
+.philosophy-card .title { margin: 0 0 1.1rem; color: var(--text-primary); }
+.philosophy-card p { margin: 0; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; }
 
 .method-columns, .result-columns { margin-top: 1.5rem; }
 .method-card, .result-card { height: 100%; padding: 1.6rem; border: 1px solid var(--border-color); }
@@ -68,6 +72,17 @@
 .result-number { color: var(--primary-color); font-weight: 800; font-size: clamp(1.75rem, 3vw, 2.35rem); line-height: 1.2; white-space: nowrap; }
 .result-number span { color: var(--text-light); font-size: .58em; }
 .results-footnote { max-width: 850px; margin: 1.5rem auto 0; color: var(--text-secondary); text-align: center; font-size: .9rem; }
+.friction-section { margin: 0 auto 3rem; }
+.friction-section .title { margin-bottom: .75rem; }
+.friction-intro { max-width: 760px; margin: 0 auto 1.75rem; color: var(--text-secondary); line-height: 1.6; }
+.friction-results-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; gap: 1.5rem; }
+.friction-figure, .friction-metrics { min-width: 0; margin: 0; padding: 1rem; background: #fff; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); }
+.friction-figure img, .friction-metrics img { display: block; width: 100%; height: auto; }
+.friction-figure figcaption, .friction-metrics figcaption { margin: .8rem .2rem .1rem; color: var(--text-secondary); font-size: .9rem; line-height: 1.5; text-align: center; }
+.friction-results-detail { display: flex; flex-direction: column; gap: 1rem; }
+.friction-summary { margin: 0; padding: 1.25rem 1.4rem; color: var(--text-secondary); background: #eff6ff; border-left: 4px solid var(--primary-color); border-radius: var(--border-radius); line-height: 1.65; }
+.friction-summary strong { color: var(--text-primary); }
+.locomotion-subtitle { margin: 0 0 .5rem; }
 .bibtex-pending { padding: 1.5rem; border-radius: var(--border-radius); background: var(--background-accent); border: 1px solid var(--border-color); }
 .bibtex-pending p { margin: 0; color: var(--text-secondary); }
 
@@ -244,6 +259,7 @@ body {
     height: auto;
     object-fit: contain;
 }
+.affiliation-logos a { display: inline-block; justify-self: center; line-height: 0; border-radius: 2px; }
 
 .publication-venue-line { margin-bottom: 1rem; }
 .publication-venue-line .publication-venue { margin-top: 0; }
@@ -696,6 +712,10 @@ code {
 
 
 /* Mobile Responsive Improvements */
+@media screen and (max-width: 900px) {
+  .teaser-layout, .friction-results-grid { grid-template-columns: 1fr; }
+}
+
 @media screen and (max-width: 768px) {
   .hardware-comparisons { grid-template-columns: 1fr; }
   .experiment-grid { grid-template-columns: 1fr; }

@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20261005-logos">
+  <link rel="stylesheet" href="static/css/index.css?v=20261005-results">
   <script defer src="static/js/fontawesome.all.min.js"></script>
 </head>
 <body>
@@ -47,7 +47,7 @@
               <div class="affiliation-logos" aria-label="Research affiliations">
                 <img src="static/images/ncstate-brick-2x2-red.png" width="133" height="64" style="height:64px;width:auto;max-width:100%" alt="NC State University logo">
                 <img src="static/images/symbolforicon.png" width="64" height="64" style="height:64px;width:auto;max-width:100%" alt="Department of Mechanical and Aerospace Engineering logo">
-                <img src="static/images/logo.png" width="176" height="64" style="height:64px;width:auto;max-width:100%" alt="HIER Lab logo">
+                <a href="https://hier-robotics.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Visit the HIER Lab website"><img src="static/images/logo.png" width="176" height="64" style="height:64px;width:auto;max-width:100%" alt="HIER Lab logo"></a>
               </div>
               <div class="publication-venue-line"><span class="publication-venue">IEEE Robotics and Automation Letters · Accepted</span></div>
               <div class="publication-links">
@@ -76,12 +76,18 @@
 
     <!-- Teaser block: original template structure, using the supplied project figure. -->
     <section class="hero teaser" aria-labelledby="teaser-title">
-      <div class="container is-max-desktop">
+      <div class="container is-widescreen">
         <div class="hero-body">
-          <figure class="teaser-figure">
-            <img src="static/images/hero.png" width="1270" height="490" alt="Quadruped crossing from non-slippery to slippery terrain while its velocity command is reduced">
-            <figcaption id="teaser-title" class="subtitle has-text-centered">As terrain friction changes, LA-WBC infers terrain friction from proprioception and WBC command–response signals and then adjusts the commanded walking speed and the contact wrench cone constraints in WBC.</figcaption>
-          </figure>
+          <div class="teaser-layout">
+            <figure class="teaser-figure">
+              <img src="static/images/hero.png" width="1270" height="490" alt="Quadruped crossing from non-slippery to slippery terrain while its velocity command is reduced">
+              <figcaption id="teaser-title" class="subtitle has-text-centered">As terrain friction changes, LA-WBC infers terrain friction from proprioception and WBC command–response signals and then adjusts the commanded walking speed and the contact wrench cone constraints in WBC.</figcaption>
+            </figure>
+            <aside class="box philosophy-card" aria-labelledby="philosophy-title">
+              <h2 class="title is-4" id="philosophy-title">Design Philosophy</h2>
+              <p>Whole-Body Control can provide effective and safe adaptation of locomotion to uncertain environments when its model and control parameters are properly updated, while retaining formal guarantees of safety and stability. Based on this idea, LA-WBC uses data-driven learning to make those updates online, thereby improving both performance and safety.</p>
+            </aside>
+          </div>
         </div>
       </div>
     </section>
@@ -124,6 +130,28 @@
       <div class="hero-body">
         <div class="container is-widescreen">
           <h2 class="title is-3 has-text-centered" id="results-title">Results</h2>
+          <div class="friction-section" aria-labelledby="friction-title">
+            <h3 class="title is-4 has-text-centered" id="friction-title">Terrain-Friction Estimation</h3>
+            <!-- <p class="has-text-centered friction-intro">The estimator responds as the robot moves from non-slippery terrain (μ ≈ 0.76) onto a slippery surface (μ ≈ 0.21).</p> -->
+            <div class="friction-results-grid">
+              <figure class="friction-figure">
+                <a href="static/images/friction_prediction.png" target="_blank" rel="noopener" aria-label="Open the friction-prediction figure at full size">
+                  <img src="static/images/friction_prediction.png" width="1130" height="1271" loading="lazy" alt="Hardware friction predictions before model matching, after model matching, and after alpha scaling as the robot enters slippery terrain">
+                </a>
+                <figcaption>Hardware friction inference before and after model matching, with and without feature-scaling.</figcaption>
+              </figure>
+              <div class="friction-results-detail">
+                <figure class="friction-metrics">
+                  <a href="static/images/friction_prediction_metrics.png" target="_blank" rel="noopener" aria-label="Open the prediction-error table at full size">
+                    <img src="static/images/friction_prediction_metrics.png" width="1092" height="678" loading="lazy" alt="Prediction error table across non-slippery and slippery terrain for FCNN, GRU, Transformer, RecGNN, and alpha-scaled RecGNN">
+                  </a>
+                  <figcaption>Prediction error across terrain conditions; lower values are better.</figcaption>
+                </figure>
+                <p class="friction-summary">On slippery terrain, α-scaled RecGNN reduced prediction MAE from <strong>0.1251 to 0.0646</strong> and standard deviation from <strong>0.1069 to 0.0531</strong> relative to unscaled RecGNN. The inferred friction then guides the WBC parameter updates shown below.</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="title is-4 has-text-centered locomotion-subtitle">Adaptive Locomotion</h3>
           <!-- <p class="has-text-centered results-intro">Reported comparisons on high- and low-friction planar terrain.</p> -->
           <div class="hardware-comparisons">
             <figure class="hardware-comparison">
